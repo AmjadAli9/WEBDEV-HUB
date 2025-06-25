@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Community.css";
@@ -294,4 +294,3 @@ const CommunityPage = () => {
 };
 
 export default CommunityPage;
->>>>>>> 9b2d469fd6f28892b7277d47845433741d5b49ba
