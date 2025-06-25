@@ -7,7 +7,7 @@ import './Navbar.css';
 const pages = [
   { name: 'Home', path: '/' },
   { name: 'CodePad', path: '/codepad' },
-  { name: 'Tutorials', path: '/tutorial' },
+  { name: 'Tutorial', path: '/tutorial' },
   { name: 'Resources', path: '/resources' },
   { name: 'Interview Prep', path: '/interview-prep' },
   { name: 'Community', path: '/community' },
@@ -94,7 +94,7 @@ function Navbar() {
       <div className={`navbar-center ${menuOpen ? 'open' : ''}`}>
         <NavLink to="/" onClick={toggleMenu}>Home</NavLink>
         <NavLink to="/codepad" onClick={toggleMenu}>CodePad</NavLink>
-        <NavLink to="/tutorials" onClick={toggleMenu}>Learn</NavLink>
+        <NavLink to="/tutorial" onClick={toggleMenu}>Learn</NavLink>
         <NavLink to="/resources" onClick={toggleMenu}>Resources</NavLink>
         <NavLink to="/interview-prep" onClick={toggleMenu}>Prep</NavLink>
         <NavLink to="/community" onClick={toggleMenu}>Community</NavLink>
