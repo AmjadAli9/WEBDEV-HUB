@@ -1,4 +1,3 @@
-// src/pages/Resources.js
 import React, { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import "./Resources.css";
