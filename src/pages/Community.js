@@ -42,9 +42,6 @@ const CommunityPage = () => {
 
   return (
     <div className="community-page">
-      {/* Navbar */}
-      
-
       <div className="community-container">
         {/* 🌟 Inspiration Wall */}
         <section className="inspiration-wall">
