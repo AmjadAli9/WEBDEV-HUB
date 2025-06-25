@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./Community.css";
 
 const CommunityPage = () => {
@@ -9,8 +8,14 @@ const CommunityPage = () => {
   ]);
 
   const [discussions, setDiscussions] = useState([
-    { question: "What’s the best way to learn Redux?", comments: ["📘 Try the official docs!", "🎥 I found a great YouTube playlist."] },
-    { question: "Looking for collaborators on a React project", comments: ["🙋‍♂️ Count me in!", "💡 What’s the project idea?"] },
+    {
+      question: "What’s the best way to learn Redux?",
+      comments: ["📘 Try the official docs!", "🎥 I found a great YouTube playlist."],
+    },
+    {
+      question: "Looking for collaborators on a React project",
+      comments: ["🙋‍♂️ Count me in!", "💡 What’s the project idea?"],
+    },
   ]);
 
   const [newProject, setNewProject] = useState({ title: "", description: "" });
@@ -43,7 +48,6 @@ const CommunityPage = () => {
   return (
     <div className="community-page">
       <div className="community-container">
-        {/* 🌟 Inspiration Wall */}
         <section className="inspiration-wall">
           <h2>🌟 Inspiration Wall</h2>
           <p>Fuel your creativity — read success stories, find project ideas, and stay motivated.</p>
@@ -59,7 +63,6 @@ const CommunityPage = () => {
           </div>
         </section>
 
-        {/* 💻 Project Showcase */}
         <section className="project-showcase">
           <h2>💻 Project Showcase</h2>
           <p>Check out community creations or share your own masterpiece!</p>
@@ -87,7 +90,6 @@ const CommunityPage = () => {
           </div>
         </section>
 
-        {/* 📚 Learning Resources */}
         <section className="learning-resources">
           <h2>📚 Learning Resources</h2>
           <ul>
@@ -96,7 +98,6 @@ const CommunityPage = () => {
           </ul>
         </section>
 
-        {/* 🗣️ Discussion & Collaboration */}
         <section className="discussion">
           <h2>🗣️ Discussion & Collaboration</h2>
           <form onSubmit={handleDiscussionSubmit} className="discussion-form">
@@ -128,7 +129,6 @@ const CommunityPage = () => {
           ))}
         </section>
 
-        {/* ⚡ Challenge of the Week */}
         <section className="challenge">
           <h2>⚡ Challenge of the Week</h2>
           <div className="challenge-card">
