@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import CodeMirror from "@uiw/react-codemirror";
 import { html } from "@codemirror/lang-html";
 import { css } from "@codemirror/lang-css";
@@ -7,7 +6,6 @@ import { javascript } from "@codemirror/lang-javascript";
 import "./codepad.css";
 
 const CodePad = () => {
-  const navigate = useNavigate();
   const [htmlCode, setHtml] = useState("");
   const [cssCode, setCss] = useState("");
   const [jsCode, setJs] = useState("");
@@ -44,8 +42,6 @@ const CodePad = () => {
 
   return (
     <div className="codepad-container">
-     
-
       {/* 🎯 Hero Section */}
       <header className="codepad-hero">
         <h1>⚡ Interactive Code Playground</h1>
