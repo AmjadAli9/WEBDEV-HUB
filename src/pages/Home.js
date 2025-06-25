@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
@@ -133,8 +132,6 @@ const Home = () => {
     </div>
   );
 };
-
-=======
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
@@ -269,6 +266,4 @@ const Home = () => {
     </div>
   );
 };
-
->>>>>>> 9b2d469fd6f28892b7277d47845433741d5b49ba
 export default Home;
