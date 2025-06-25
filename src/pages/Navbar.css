@@ -113,6 +113,11 @@
   color: #0f172a;
 }
 
+.search-result-item.selected {
+  background: #38bdf8;
+  color: #0f172a;
+}
+
 .search-result-item strong {
   display: block;
   font-size: clamp(0.9rem, 2.5vw, 1rem);
@@ -144,7 +149,6 @@
   display: flex;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .navbar-center {
     display: none;
@@ -208,7 +212,6 @@
   }
 }
 
-/* Light Mode */
 .light .navbar-center a {
   color: #0f172a;
 }
@@ -244,4 +247,9 @@
 
 .light .search-result-item p {
   color: #666;
+}
+
+.light .search-result-item.selected {
+  background: #38bdf8;
+  color: #0f172a;
 }
