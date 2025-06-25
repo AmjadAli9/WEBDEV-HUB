@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState } from "react";
 import "./DevChallenges.css";
 import { useNavigate } from "react-router-dom";
@@ -205,7 +204,6 @@ function DevChallenges() {
 }
 
 export default DevChallenges;
-=======
 import React, { useState } from "react";
 import "./DevChallenges.css";
 import { useNavigate } from "react-router-dom";
@@ -412,4 +410,3 @@ function DevChallenges() {
 }
 
 export default DevChallenges;
->>>>>>> 9b2d469fd6f28892b7277d47845433741d5b49ba
