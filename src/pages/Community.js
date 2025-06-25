@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Community.css";
@@ -146,7 +145,6 @@ const CommunityPage = () => {
 };
 
 export default CommunityPage;
-=======
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Community.css";
