@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { Link } from "react-router-dom";
+// ❌ Removed unused import: Link
 import "./Resources.css";
 
 const Resources = () => {
@@ -191,8 +191,7 @@ const Resources = () => {
       "⚡ Optimize images to boost website performance.",
       "📚 Build projects to solidify your coding skills.",
       "🛠️ Master DevTools for debugging like a pro.",
-      "🌐 Explore CSS Grid for advanced layouts."
-      ,
+      "🌐 Explore CSS Grid for advanced layouts.",
     ],
     []
   );
@@ -218,13 +217,11 @@ const Resources = () => {
 
   return (
     <div className="resources-container">
-      {/* Hero Section */}
       <header className="resources-hero">
         <h1>WebDevHub Resources</h1>
         <p>Your ultimate toolbox for web development success!</p>
       </header>
 
-      {/* Search Bar */}
       <input
         type="text"
         placeholder="🔍 Search resources..."
@@ -233,12 +230,14 @@ const Resources = () => {
           const query = e.target.value.toLowerCase();
           setSearch(query);
           if (query) {
-            const filtered = resources.map((section) => ({
-              ...section,
-              items: section.items.filter((item) =>
-                item.title.toLowerCase().includes(query)
-              ),
-            })).filter((section) => section.items.length > 0);
+            const filtered = resources
+              .map((section) => ({
+                ...section,
+                items: section.items.filter((item) =>
+                  item.title.toLowerCase().includes(query)
+                ),
+              }))
+              .filter((section) => section.items.length > 0);
             setFilteredResources(filtered);
           } else {
             setFilteredResources(resources);
@@ -247,15 +246,16 @@ const Resources = () => {
         className="search-bar"
       />
       {search && (
-        <button onClick={() => { setSearch(""); setFilteredResources(resources); }}>
+        <button onClick={() => {
+          setSearch("");
+          setFilteredResources(resources);
+        }}>
           ❌ Clear Search
         </button>
       )}
 
-      {/* Tip of the Day */}
       <div className="tip-box">💡 Dev Tip: {randomTip}</div>
 
-      {/* Resource of the Day */}
       <div className="resource-of-the-day">
         🌟 Resource of the Day:{" "}
         <a href={resourceOfTheDay.link} target="_blank" rel="noopener noreferrer">
@@ -263,7 +263,6 @@ const Resources = () => {
         </a>
       </div>
 
-      {/* Resources List */}
       {filteredResources.map((section, index) => (
         <section key={index} className="resources-section">
           <h2>{section.category}</h2>
@@ -287,7 +286,6 @@ const Resources = () => {
         </section>
       ))}
 
-      {/* Footer */}
       <footer>
         <p>© 2025 WebDevHub. All rights reserved.</p>
       </footer>
