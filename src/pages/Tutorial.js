@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+// src/pages/Tutorial.js
+import React, { useState, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import './Tutorial.css';
 
@@ -375,13 +376,13 @@ function Tutorial() {
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedTutorials, setExpandedTutorials] = useState({});
 
-  const categories = ['All', ...new Set(tutorials.map(t => t.category))];
+  const categories = useMemo(() => ['All', ...new Set(tutorials.map(t => t.category))], []);
 
   useEffect(() => {
     if (category && categories.includes(category)) {
       setSelectedCategory(category);
     }
-  }, [category, categories]); // Added 'categories' to dependency array
+  }, [category, categories]);
 
   const filteredTutorials = tutorials
     .filter(t => selectedCategory === 'All' || t.category === selectedCategory)
