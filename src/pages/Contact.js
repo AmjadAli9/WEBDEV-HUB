@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState } from 'react';
 import './Contact.css';
 
@@ -93,7 +92,6 @@ const ContactPage = () => {
 };
 
 export default ContactPage;
-=======
 import React, { useState } from 'react';
 import './Contact.css';
 
@@ -188,4 +186,3 @@ const ContactPage = () => {
 };
 
 export default ContactPage;
->>>>>>> 9b2d469fd6f28892b7277d47845433741d5b49ba
