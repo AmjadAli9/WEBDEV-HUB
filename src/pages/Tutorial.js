@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './Tutorial.css';
-
-// ...your full tutorials array as in your first block (with tags, resources, etc.)...
-
 const tutorials = [
-  // ...existing tutorials array (with tags, resources, etc.)...
-  // (Keep the full, detailed tutorials array here. Remove the second, short array.)
+
 ];
 
 function Tutorial() {
