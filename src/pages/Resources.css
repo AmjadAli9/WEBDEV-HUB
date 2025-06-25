@@ -161,39 +161,6 @@ h2, .resource-card h3 {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-  .resources-container {
-    max-width: 95%;
-    padding: 2rem 0.5rem;
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-
-  h2, .resource-card h3 {
-    font-size: 1.5rem;
-  }
-
-  .resource-card p {
-    font-size: 0.95rem;
-  }
-
-  .search-bar {
-    max-width: 90%;
-  }
-
-  .resource-cards {
-    grid-template-columns: 1fr;
-    padding: 1.5rem 0.5rem;
-  }
-
-  .resource-of-the-day {
-    font-size: 1.1rem;
-    padding: 1rem;
-  }
-}
-
 @media (max-width: 480px) {
   h1 {
     font-size: 1.8rem;
@@ -218,4 +185,4 @@ h2, .resource-card h3 {
   .search-bar {
     padding: 0.75rem;
   }
-
+} 
