@@ -241,6 +241,4 @@ details summary:focus {
     padding: 0.5rem 0.75rem;
     font-size: 0.9rem;
   }
-} /* ✅ This closing brace was missing */
-
-/* Remove any extra duplicate blocks beyond this point */
+} 
