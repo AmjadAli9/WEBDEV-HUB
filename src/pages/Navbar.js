@@ -20,6 +20,7 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [selectedIndex, setSelectedIndex] = useState(-1); // Track selected result for accessibility
   const searchRef = useRef(null);
   const navigate = useNavigate();
 
@@ -33,6 +34,7 @@ function Navbar() {
   const handleSearch = (e) => {
     const query = e.target.value.toLowerCase();
     setSearchQuery(query);
+    setSelectedIndex(-1); // Reset selection on new input
 
     if (query.trim() === '') {
       setSearchResults([]);
@@ -45,11 +47,29 @@ function Navbar() {
     setSearchResults(results);
   };
 
+  // Handle keyboard navigation for search results
+  const handleKeyDown = (e, path, index) => {
+    if (e.key === 'Enter') {
+      handleResultClick(path);
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setSelectedIndex((prev) => (prev < searchResults.length - 1 ? prev + 1 : prev));
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setSelectedIndex((prev) => (prev > 0 ? prev - 1 : prev));
+    } else if (e.key === 'Escape') {
+      setSearchResults([]);
+      setSearchQuery('');
+      setSelectedIndex(-1);
+    }
+  };
+
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (searchRef.current && !searchRef.current.contains(e.target)) {
         setSearchResults([]);
         setSearchQuery('');
+        setSelectedIndex(-1);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -59,6 +79,7 @@ function Navbar() {
   const handleResultClick = (path) => {
     setSearchResults([]);
     setSearchQuery('');
+    setSelectedIndex(-1);
     navigate(path);
   };
 
@@ -90,20 +111,31 @@ function Navbar() {
             onChange={handleSearch}
             aria-label="Search pages"
             aria-describedby="search-help"
+            onKeyDown={(e) => {
+              if (e.key === 'ArrowDown' && searchResults.length > 0) {
+                e.preventDefault();
+                setSelectedIndex(0);
+              } else if (e.key === 'Escape') {
+                setSearchResults([]);
+                setSearchQuery('');
+                setSelectedIndex(-1);
+              }
+            }}
           />
           <i className="fas fa-search"></i>
           <span id="search-help" className="sr-only">Search for available pages like Home, Tutorials, or Resources</span>
         </div>
         {searchResults.length > 0 && (
-          <div className="search-results">
-            {searchResults.map((page) => (
+          <div className="search-results" role="listbox" aria-label="Search results">
+            {searchResults.map((page, index) => (
               <div
                 key={page.path}
-                className="search-result-item"
+                className={`search-result-item ${index === selectedIndex ? 'selected' : ''}`}
                 onClick={() => handleResultClick(page.path)}
                 role="option"
+                aria-selected={index === selectedIndex}
                 tabIndex={0}
-                onKeyDown={(e) => e.key === 'Enter' && handleResultClick(page.path)}
+                onKeyDown={(e) => handleKeyDown(e, page.path, index)}
               >
                 <strong>{page.name}</strong>
               </div>
