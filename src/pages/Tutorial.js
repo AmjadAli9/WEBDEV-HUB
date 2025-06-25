@@ -360,7 +360,7 @@ const tutorials = [
     videos: [
       { type: 'YouTube', url: 'https://www.youtube.com/embed/2k2h9vY0l8E', id: 'perf-1' }, // freeCodeCamp
       { type: 'YouTube', url: 'https://www.youtube.com/embed/6iZ_9q50pq0', id: 'perf-2' }, // Web Dev Simplified
-      { type: 'YouTube', url: 'https://www.youtube.com/embed/E3dDnt1lN2A', id: 'perf-3' }, // Traversy Media (replaced invalid link)
+      { type: 'YouTube', url: 'https://www.youtube.com/embed/E3dDnt1lN2A', id: 'perf-3' }, // Traversy Media
     ],
     resources: [
       { name: 'Web.dev Performance', url: 'https://web.dev/learn/performance/' },
@@ -375,13 +375,13 @@ function Tutorial() {
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedTutorials, setExpandedTutorials] = useState({});
 
+  const categories = ['All', ...new Set(tutorials.map(t => t.category))];
+
   useEffect(() => {
     if (category && categories.includes(category)) {
       setSelectedCategory(category);
     }
-  }, [category]);
-
-  const categories = ['All', ...new Set(tutorials.map(t => t.category))];
+  }, [category, categories]); // Added 'categories' to dependency array
 
   const filteredTutorials = tutorials
     .filter(t => selectedCategory === 'All' || t.category === selectedCategory)
