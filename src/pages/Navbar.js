@@ -1,7 +1,19 @@
+// src/components/Navbar.js
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { tutorials } from '../pages/Tutorial'; // Import tutorials array
 import './Navbar.css';
+
+// Define available pages for search
+const pages = [
+  { name: 'Home', path: '/' },
+  { name: 'CodePad', path: '/codepad' },
+  { name: 'Tutorials', path: '/tutorials' },
+  { name: 'Resources', path: '/resources' },
+  { name: 'Interview Prep', path: '/interview-prep' },
+  { name: 'Community', path: '/community' },
+  { name: 'Challenges', path: '/devchallenges' },
+  { name: 'Project Ideas', path: '/project-idea' },
+];
 
 function Navbar() {
   const [darkMode, setDarkMode] = useState(true);
@@ -18,7 +30,6 @@ function Navbar() {
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
-  // Handle search input
   const handleSearch = (e) => {
     const query = e.target.value.toLowerCase();
     setSearchQuery(query);
@@ -28,17 +39,12 @@ function Navbar() {
       return;
     }
 
-    const results = tutorials.filter(
-      (tutorial) =>
-        tutorial.title.toLowerCase().includes(query) ||
-        tutorial.description.toLowerCase().includes(query) ||
-        tutorial.category.toLowerCase().includes(query) ||
-        tutorial.tags.some((tag) => tag.toLowerCase().includes(query))
+    const results = pages.filter((page) =>
+      page.name.toLowerCase().includes(query)
     );
     setSearchResults(results);
   };
 
-  // Close search results when clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (searchRef.current && !searchRef.current.contains(e.target)) {
@@ -50,11 +56,10 @@ function Navbar() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Handle search result click
-  const handleResultClick = (category) => {
+  const handleResultClick = (path) => {
     setSearchResults([]);
     setSearchQuery('');
-    navigate(`/tutorials/${category.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`);
+    navigate(path);
   };
 
   return (
@@ -80,28 +85,27 @@ function Navbar() {
         <div className="search-box">
           <input
             type="text"
-            placeholder="Search tutorials..."
+            placeholder="Search pages..."
             value={searchQuery}
             onChange={handleSearch}
-            aria-label="Search tutorials"
+            aria-label="Search pages"
             aria-describedby="search-help"
           />
           <i className="fas fa-search"></i>
-          <span id="search-help" className="sr-only">Search for tutorials by title, description, category, or tags</span>
+          <span id="search-help" className="sr-only">Search for available pages like Home, Tutorials, or Resources</span>
         </div>
         {searchResults.length > 0 && (
           <div className="search-results">
-            {searchResults.map((tutorial) => (
+            {searchResults.map((page) => (
               <div
-                key={tutorial.id}
+                key={page.path}
                 className="search-result-item"
-                onClick={() => handleResultClick(tutorial.category)}
+                onClick={() => handleResultClick(page.path)}
                 role="option"
                 tabIndex={0}
-                onKeyDown={(e) => e.key === 'Enter' && handleResultClick(tutorial.category)}
+                onKeyDown={(e) => e.key === 'Enter' && handleResultClick(page.path)}
               >
-                <strong>{tutorial.title}</strong> ({tutorial.category})
-                <p>{tutorial.description.substring(0, 100)}...</p>
+                <strong>{page.name}</strong>
               </div>
             ))}
           </div>
