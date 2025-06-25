@@ -7,7 +7,7 @@ import './Navbar.css';
 const pages = [
   { name: 'Home', path: '/' },
   { name: 'CodePad', path: '/codepad' },
-  { name: 'Tutorials', path: '/tutorials' },
+  { name: 'Tutorials', path: '/learn' },
   { name: 'Resources', path: '/resources' },
   { name: 'Interview Prep', path: '/interview-prep' },
   { name: 'Community', path: '/community' },
